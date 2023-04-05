@@ -48,8 +48,8 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
   if (!authState) {
     return null;
   }
-  console.log("is authenticated?", authState.isAuthenticated);
-  console.log("the authstate is:", authState);
+  // console.log("is authenticated?", authState.isAuthenticated);
+  // console.log("the authstate is:", authState);
   return (
     <div>
       <Menu fixed="top" inverted>

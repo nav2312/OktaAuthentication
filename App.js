@@ -11,7 +11,6 @@ import Todo from "./components/Todo/Todo";
 import Profile from "./Profile";
 import CorsErrorModal from "./CorsErrorModal";
 import AuthRequiredModal from "./AuthRequiredModal";
-import ProtectedRoutes from "./ProtectedRoutes";
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -59,15 +58,14 @@ const App = () => {
       <AuthRequiredModal
         {...{ authRequiredModalOpen, setAuthRequiredModalOpen, triggerLogin }}
       />
-      console.log('trigger login....',triggerLogin);
+
       <Container text style={{ marginTop: "7em" }}>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route element={<ProtectedRoutes />}>
-            <Route path="login/callback" element={<LoginCallback />} />
-            <Route path="/todo" element={<Todo />} />
-            <Route path="/profile" element={<Profile />} />
-          </Route>
+
+          <Route path="login/callback" element={<LoginCallback />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Container>
     </Security>
