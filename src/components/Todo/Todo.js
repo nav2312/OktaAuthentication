@@ -72,7 +72,7 @@ const Todo = () => {
             type="submit"
             style={{ width: "15%", float: "right", padding: "10px 5px" }}
           >
-            Add Item
+            Add
           </button>
         </div>
         <div style={{ clear: "both" }}></div>
