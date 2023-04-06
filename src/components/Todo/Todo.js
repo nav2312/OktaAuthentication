@@ -45,12 +45,11 @@ const Todo = () => {
       navigate("/");
     }
     localStorage.setItem("todo-list", JSON.stringify(items)); // local storage get
+    // axios.get("http://localhost:3002/todoItems").then((response) => {
+    //   // console.log(response.data);
+    //   setItems(response.data);
+    //   });
   }, [items]);
-  // axios.get("http://localhost:3002/todoItems").then((response) => {
-  //   // console.log(response.data);
-  //   setItems(response.data);
-  //   });
-  // }, [datalist]);
 
   return (
     <div className="todo-form">
