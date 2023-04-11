@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Todo.css";
-import axios, { Axios } from "axios";
+// import axios, { Axios } from "axios";
 const Todo = () => {
   const [input, setInput] = useState();
   const [items, setItems] = useState(() => {
@@ -10,7 +10,7 @@ const Todo = () => {
   const navigate = useNavigate();
   // const [checked, setChecked] = useState(false);
 
-  const [datalist, setdatalist] = React.useState(null);
+  // const [datalist, setdatalist] = React.useState(null);
 
   const addHandler = (e) => {
     console.log("....", input);
@@ -40,10 +40,12 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    // console.log(Object.keys(localStorage.getItem("okta-token-storage")).length);
+    console.log(Object.keys(localStorage.getItem("okta-token-storage")).length);
+
     if (Object.keys(localStorage.getItem("okta-token-storage")).length <= 2) {
       navigate("/");
     }
+
     localStorage.setItem("todo-list", JSON.stringify(items)); // local storage get
   }, [items]);
   // axios.get("http://localhost:3002/todoItems").then((response) => {
@@ -55,7 +57,7 @@ const Todo = () => {
   return (
     <div className="todo-form">
       <form onSubmit={addHandler} style={{ marginBottom: "15px" }}>
-        <div className="title" data-testid="todo-1">
+        <div className="title" data-testid="todo-title">
           <label> TODO LIST </label>{" "}
         </div>
         <div>
