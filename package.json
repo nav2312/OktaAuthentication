@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cfaester/enzyme-adapter-react-18": "^0.7.0",
     "@okta/okta-auth-js": "^7.2.0",
     "@okta/okta-react": "^6.7.0",
     "@okta/okta-signin-widget": "^7.5.0",

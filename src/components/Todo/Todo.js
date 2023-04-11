@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Todo.css";
-import axios, { Axios } from "axios";
+// import axios, { Axios } from "axios";
 const Todo = () => {
-  const [input, setInput] = useState();
+  const [inputVal, setInput] = useState("");
   const [items, setItems] = useState(() => {
     return JSON.parse(localStorage.getItem("todo-list")) || [];
   });
   const navigate = useNavigate();
   // const [checked, setChecked] = useState(false);
 
-  const [datalist, setdatalist] = React.useState(null);
+  // const [datalist, setdatalist] = React.useState(null);
 
   const addHandler = (e) => {
-    console.log("....", input);
+    // console.log("....", inputVal);
     e.preventDefault();
-    if (input) {
-      setItems([...items, { name: input, ischecked: false }]);
+    if (inputVal) {
+      setItems([...items, { name: inputVal, ischecked: false }]);
       setInput("");
     }
     //   axios
@@ -30,7 +30,12 @@ const Todo = () => {
     //     });
     // }
   };
-
+  const isEmpty = (obj) => {
+    for (var prop in obj) {
+      if (obj.hasOwnProperty(prop) && obj != "{}") return true;
+    }
+    return false;
+  };
   const deleteHandler = (ele) => {
     setItems(items.filter((x) => x !== ele));
   };
@@ -40,8 +45,7 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    // console.log(Object.keys(localStorage.getItem("okta-token-storage")).length);
-    if (Object.keys(localStorage.getItem("okta-token-storage")).length <= 2) {
+    if (!isEmpty(localStorage.getItem("okta-token-storage"))) {
       navigate("/");
     }
     localStorage.setItem("todo-list", JSON.stringify(items)); // local storage get
@@ -56,8 +60,8 @@ const Todo = () => {
   return (
     <div className="todo-form">
       <form onSubmit={addHandler} style={{ marginBottom: "15px" }}>
-        <div className="title" data-testid="todo-1">
-          <label> TODO LIST </label>{" "}
+        <div className="title" data-testid="todo-title">
+          <label>TODO LIST</label>
         </div>
         <div>
           <input
@@ -67,7 +71,7 @@ const Todo = () => {
             name="inputTodo"
             placeholder="Please add your task"
             onChange={(e) => setInput(e.target.value)}
-            value={input}
+            value={inputVal}
           />
           <button
             type="submit"
@@ -99,7 +103,6 @@ const Todo = () => {
 
               {ele.ischecked ? (
                 <label style={{ textDecoration: "line-through" }}>
-                  {" "}
                   {ele.name}
                 </label>
               ) : (

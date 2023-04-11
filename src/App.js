@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, useNavigate, Routes } from "react-router-dom";
+import { Route, useNavigate, useHistory, Routes } from "react-router-dom";
 import { OktaAuth, toRelativeUrl } from "@okta/okta-auth-js";
 import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
 import { Container } from "semantic-ui-react";
@@ -21,6 +21,7 @@ const App = () => {
     React.useState(false);
 
   const history = useNavigate(); // example from react-router
+  // const history = useHistory(); // example from react-router
 
   const triggerLogin = () => {
     // Redirect to the /login page that has a CustomLoginComponent
